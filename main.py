@@ -1,6 +1,6 @@
-import bs4
 import csv
 from bs4 import BeautifulSoup
+import sys
 
 
 def formatter(string):
@@ -65,7 +65,10 @@ if __name__ == "__main__":
     for value in data:
         rows.append(get_td(formatter(str(value))))
 
-    filename = "data.csv"
+    if len(sys.argv) > 1:
+        filename = f"{sys.argv[1]}.csv"
+    else:
+        filename = "data.csv"
     fields = ["sold time", "time since transaction link", "nft", "nft link",
               "price", "usd", "attributes", "seller", "seller link", "buyer", "buyer link"]
 
